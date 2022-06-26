@@ -1,18 +1,33 @@
-// Class 사용 후
-class 유저 {
-  constructor(first, last) {
-    this.firstName = first; //  this.firstName에 "first"이라는 매개변수 할당
-    this.lastName = last; // this.lastName에 "last"이라는 매개변수 할당
-  }
-  풀네임() {
-    return `${this.firstName} ${this.lastName}`; // 띄어쓰기로 구분함
+class Vehicle {
+  constructor(name, wheel) {
+    this.name = name;
+    this.wheel = wheel;
   }
 }
 
-const 홍길동 = new 유저("홍", "길동"); // 여기서 new는 생성자 함수
-const 김철수 = new 유저("김", "철수");
-const 김이솔 = new 유저("김", "이솔");
+const myVehicle = new Vehicle("운송수단", 2);
+console.log(myVehicle); // 객체 데이터 생성을 확인 할 수 있음
 
-console.log(홍길동.풀네임()); // 홍 길동 -- 풀네임이란 메소드 실행
-console.log(김철수);
-console.log(김이솔);
+class Bicycle extends Vehicle {
+  // Vehicle 데이터를 extends 확장(상속)을 통해 사용하겠다.
+  constructor(name, wheel) {
+    super(name, wheel); // 여기서 super는 Vehicle
+  }
+}
+
+const myBicycle = new Bicycle("삼천리", 2);
+const daughtersBicycle = new Bicycle("세발", 3);
+console.log(myBicycle);
+console.log(daughtersBicycle);
+
+class Car extends Vehicle {
+  constructor(name, wheel, license) {
+    super(name, wheel);
+    this.license = license; // 새로운 로직
+  }
+}
+
+const myCar = new Car("벤츠", 4, true);
+const daughtersCar = new Car("포르쉐", 4, false);
+console.log(myCar);
+console.log(daughtersCar);
