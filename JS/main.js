@@ -1,24 +1,26 @@
-// 일반(Norml) 함수는 호출 위치에 따라 this 정의!
-// 화살표(Arrow) 함수는 자신의 선언된 함수 범위에서 this 정의
-
-const AKARI = {
-  name: "AKARI",
-  norml: function () {
-    console.log(this.name);
-  },
-  arrow: () => {
-    console.log(this.name);
+// 일반 함수
+const timer = {
+  name: "akari",
+  timeout: function () {
+    // setTimeout(함수, 시간)
+    setTimeout(function () {
+      console.log(this.name); // undefined
+    }, 2000);
   },
 };
+timer.timeout(); // undefined
 
-AKARI.norml(); // AKARI
-AKARI.arrow(); // undefined
-
-const NENE = {
-  name: "Nene",
-  norml: AKARI.norml,
-  arrow: AKARI.arrow,
+// 화살표 함수
+const timer = {
+  name: "akari",
+  timeout: function () {
+    // setTimeout(함수, 시간)
+    setTimeout(() => {
+      console.log(this.name); // akari
+    }, 2000);
+  },
 };
+timer.timeout(); // akari
 
-NENE.norml(); // Nene
-NENE.arrow(); // undefined
+// setTimeout나 setInterval 함수를 사용할 때에는 콜백으로 일반 함수를 사용하는 것 보다
+// 화살표 함수를 사용하는 하는 것이 활용도가 높다.
