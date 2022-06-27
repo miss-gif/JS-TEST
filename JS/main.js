@@ -1,17 +1,16 @@
-// Object.assign : 특정 객체를 복사하는 용도로 사용 가능
-
-const userAge = {
-  // key : value형태
+const user = {
   name: "akari",
   ahe: 85,
-};
-const userEmail = {
-  name: "akari",
   email: "svx327@naver.com",
 };
 
-// 새로운 객체 데이터를 만들고 싶으면..
-const target = Object.assign({}, userAge, userEmail); // 대상, 출처, 출처
-console.log(target);
-console.log(userAge);
-console.log(target === userAge); // false
+const keys = Object.keys(user);
+console.log(keys);
+// ['name', 'age', 'email'] 프로퍼티 이름만 추출해서 배열로 만들어 줌
+
+console.log(user["email"]); // ['name', 'ahe', 'email']
+// 객체 데이터에서 사용 가능한 인덱싱 방법
+
+const values = keys.map((key) => user[key]);
+console.log(values); // ['akari', 85, 'svx327@naver.com']
+// 값만 가지고 있는 배열 데이터를 만들 수 있음
