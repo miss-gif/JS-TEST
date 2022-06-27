@@ -1,14 +1,18 @@
-// 객체에서 꺼내오는 속성 이름이 마음에 안들 때, 변수명을 바꾸는 방법
-const user = {
-  name: "akari",
-  age: 85,
-  email: "svx327@naver.com",
-};
+// 전개 연산자 (Spread)
 
-const { name: akari, age, email, address } = user;
-// E.g user.address
+const fruits = ["사과", "바나나", "체리"];
+console.log(fruits); // ['사과', '바나나', '체리'] -- 배열 데이터
+console.log(...fruits); // 사과 바나나 체리 -- 문자 데이터
 
-console.log(`사용자의 이름은 ${akari}입니다.`);
-console.log(`${akari}의 나이는 ${age}세입니다.`);
-console.log(`${akari}의 이메일 주소는 ${email}입니다.`);
-console.log(address);
+function toObj(a, b, c) {
+  return {
+    a: a,
+    b: b,
+    c: c,
+  };
+}
+
+console.log(toObj(...fruits));
+// {a: '사과', b: '바나나', c: '체리'}
+console.log(toObj(fruits[0], fruits[1], fruits[2]));
+// {a: '사과', b: '바나나', c: '체리'}
