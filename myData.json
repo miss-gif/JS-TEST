@@ -1,0 +1,8 @@
+{
+  "string": "AKARI",
+  "number": 123,
+  "boolean": true,
+  "null": null,
+  "object": {},
+  "array": []
+}
