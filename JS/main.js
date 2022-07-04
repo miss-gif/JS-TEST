@@ -1,19 +1,14 @@
-import _ from "lodash"; // 기본 통로의 데이터
+import axios from "axios"; // 패키지의 도움을 받아
 
-const users = [
-  { userId: "1", name: "AKI" },
-  { userId: "2", name: "HUYU" },
-  { userId: "3", name: "NATSU" },
-  { userId: "4", name: "HARU" },
-  { userId: "5", name: "AME" },
-  { userId: "6", name: "HIKARI" },
-];
+function fetchMovies() {
+  axios.get("https://www.omdbapi.com/?apikey=7035c60c&s=frozen").then((res) => {
+    console.log(res); // get 사용자를 인증하고 데이터를 요청
+    // then 콜백
+    const h1El = document.querySelector("h1");
+    const imgEl = document.querySelector("img");
+    h1El.textContent = res.data.Search[0].Title;
+    imgEl.src = res.data.Search[0].Poster;
+  });
+}
 
-const foundUser = _.find(users, { name: "NATSU" }); // find(대상 배열, { 찾는 기준 }) 객체 반환
-const foundUserIndex = _.findIndex(users, { name: "NATSU" }); // findIndex(대상 배열, { 찾는 기준 }) 인덱스 반환
-
-console.log(foundUser);
-console.log(foundUserIndex);
-
-_.remove(users, { name: "AKI" }); // remove(대상 배열, { 기준 }) 삭제
-console.log(users);
+fetchMovies();
